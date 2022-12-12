@@ -15,6 +15,8 @@ namespace LaurensKruis.ContainerShipping
 
         public Ship(int width, int height)
         {
+            if (width <= 0 || height <= 0)
+                throw new ArgumentException("Ship capacity should be atleast 1");
             this.width = width;
             this.height = height;
 
@@ -27,6 +29,7 @@ namespace LaurensKruis.ContainerShipping
         public Container this[int x, int y]
         {
             get => grid[x][y];
+            internal set => grid[x][y] = value;
         }
     }
 }
